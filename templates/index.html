@@ -1,0 +1,243 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="TemplateMo">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+
+    <title>Host Cloud - Free HTML5 Bootstrap Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/templatemo-host-cloud.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.css' %}">
+<!--
+
+Host Cloud Template
+
+https://templatemo.com/tm-541-host-cloud
+
+-->
+  </head>
+
+  <body>
+
+    <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>  
+    <!-- ***** Preloader End ***** -->
+
+    <!-- Header -->
+    <header class="">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <a class="navbar-brand" href="{% url 'home' %}"><h2>Video <em>installer</em></h2></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              
+            
+            </ul>
+          </div>
+          <div class="functional-buttons">
+            <ul>
+              <li><a>Created by R.A.S. Group </a></li>
+             <!--  <li><a href="#">Sign Up</a></li> -->
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Page Content -->
+    <!-- Banner Starts Here -->
+    <div class="banner">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 offset-md-2">
+            <div class="header-text caption">
+              <h2>Search your video</h2>
+              <div id="search-section">
+                 {% if thumbnail_url %}
+                <!-- Form 1 -->
+               
+                {% else %}
+              	<form id="suggestion_form" name="gs" method="POST" action="{% url 'download' %}">
+                <div class="searchText">
+                  {% csrf_token %}
+                   {% if video_url %}
+                  <input type="search" name="video_url" class="searchText" placeholder="Enter link here..." aria-label="Search" value={{video_url}} autocomplete="on">
+                  {% else %}
+                  <input type="search" name="video_url" class="searchText" placeholder="Enter link here..." aria-label="Search"  autocomplete="on">
+                  {% endif %}
+                  
+                </div>
+                    <input type="submit" name="results" class="main-button" value="Search Now">
+                 </form>
+                 <!-- Form 1 -->
+                    {% endif %}
+                 
+
+                 <!-- Form 2 -->
+                 <form id="suggestion_form" name="gs" method="POST" action="{% url 'downloading' %}">
+                <div class="searchText">
+                  {% csrf_token %}
+                   {% if thumbnail_url %}
+                  <img src="{{thumbnail_url}}" alt="" width="100%">
+                  <p id="title" style="margin-top:5px;"><b>{{title}}</b></p>
+                  {% endif %}
+                  </div>
+          <div class="col-sm-9 section">
+            <div class="row">
+              <div class="col-sm-5">
+                <h5>Select Format</h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-2">
+                <label><input type="radio" name="formatRadio" value="audio"> Audio</label>
+              </div>
+              <div class="col-sm-2">
+                <label><input type="radio" name="formatRadio" value="video"> Video</label>
+              </div>
+            </div>
+            <div class="row">
+              <br>
+            </div>
+            <div class="row video">
+                
+            </div>
+           
+
+            </div>
+            <div class="row">
+              
+            </div>
+            <div class="row">
+              <input type="hidden" name="video_url_d" value={{video_url}}>
+            </div>
+            <div class="row section">
+              <div class="col-sm-3 ml-4">
+                <button class="btn download" id="show"><i class="fa fa-download"></i> Download</button>
+              </div>
+            </div>
+          </div>
+        </div>  
+                
+                 </form>
+                 <!-- Form 2 -->
+
+               <div class="advSearch_chkbox">
+               </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Banner Ends Here -->
+
+<!-- *********************************** -->
+
+ <!-- Footer Starts Here -->
+    
+      <div class="container">
+        <div class="row">
+         
+          <div style="text-align: center;" class="col-md-12">
+            <div class="sub-footer">
+              <p><strong><a>Copyright &copy; 2021 Web Company: R.A.S. Group</a></strong></p>
+        
+            </div>
+          </div>
+        </div>
+      </div>
+  
+    <!-- Footer Ends Here -->
+<!-- 
+    **************************
+     -->
+
+
+ 
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Additional Scripts -->
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+    <script src="{% static 'assets/js/owl.js' %}"></script>
+    <script src="{% static 'assets/js/accordions.js' %}"></script>
+
+
+    <script language = "text/Javascript"> 
+      cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
+      function clearField(t){                   //declaring the array outside of the
+      if(! cleared[t.id]){                      // function makes it static and global
+          cleared[t.id] = 1;  // you could use true and false, but that's more typing
+          t.value='';         // with more chance of typos
+          t.style.color='#fff';
+          }
+      }
+    </script>
+
+  </body>
+   <script>
+$(".video").hide()
+$("#myDiv").hide();
+$("#myDiv2").hide();
+console.log("{{thumbnail_url}}");
+if($('#title').html() === undefined)
+{
+    $(".section").hide();
+}
+$(document).ready(function(){
+  $("#hide2").click(function(){
+    $("#myDiv2").hide();
+  });
+});
+if("{{msg}}".length !=0)
+{
+  $("#myDiv2").show();
+}
+$(document).ready(function(){
+  $("#hide").click(function(){
+    $("#myDiv").hide();
+  });
+  $("#show").click(function(){
+    $("#myDiv").show();
+  });
+});
+// $('div.section:empty').hide();
+$(document).ready(function(){
+    $('input[type="radio"]').click(function(){
+        var inputValue = $(this).attr("value");
+        if(inputValue == "audio"){
+          // var targetBox = $("." + inputValue);
+          $(".video").hide();
+          // $(".download").hide();
+        }
+        else{
+          var targetBox = $("." + inputValue);
+          // $(".box").not(targetBox).hide();
+          $(targetBox).show();
+        }
+    });
+});
+</script>
+</html>
